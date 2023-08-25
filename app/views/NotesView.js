@@ -5,6 +5,7 @@ export const NotesView = /*html*/`
         <!-- HEADER -->
         <section class="row justify-content-between">
           <h4 class="col-6">Jots</h4>
+          <h4 class="col-6 text-end" id="notesNumber">##</h4>
         </section>
         <section class="row" id="notesList">
           <!-- notes template -->
@@ -16,8 +17,8 @@ export const NotesView = /*html*/`
         <!-- New Note -->
         <form class="row justify-content-evenly pt-3" onsubmit="app.NotesController.createNote()">
           <label for="title">NEW NOTE</label>
-          <input class="col-2" type="color" name="color" id="">
-          <input class="col-7" type="text" placeholder="Note Title" name="title">
+          <input class="col-2" type="color" name="color">
+          <input class="col-7" type="text" placeholder="Note Title"  required minlength="3" maxlength="15" name="title">
           <button class="col-3" type="submit">Add</button>
         </form>
       </div>

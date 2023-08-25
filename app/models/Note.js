@@ -4,7 +4,7 @@ export class Note {
     constructor(data) {
         this.id = data.id || generateId()
         this.name = data.name
-        this.color = data.color
+        this.color = data.color || '#000000'
         this.title = data.title || 'Title'
         this.createdTime = data.createdTime || new Date()
         this.updatedAt = data.updatedAt || new Date()
@@ -16,7 +16,7 @@ export class Note {
     get template() {
         return `
     <div class="col-12">
-            <h4 class="noteSelect" onclick="app.NotesController.selectNote('${this.id}')">${this.title}</h4>
+            <h4 style="color: ${this.color}"class="noteSelect" onclick="app.NotesController.selectNote('${this.id}')">${this.title}</h4>
           </div> 
     `
     }
@@ -25,7 +25,7 @@ export class Note {
         return `
         <section class="row justify-content-between">
           <div class="col-6">
-            <h4>${this.title}</h4>
+            <h4 style= "color: ${this.color}">${this.title}</h4>
           </div>
 
           <div class="col6"></div>

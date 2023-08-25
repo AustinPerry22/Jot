@@ -1,19 +1,22 @@
 import { AppState } from "../AppState.js"
 import { notesService } from "../services/NotesService.js"
-import { setHTML } from "../utils/Writer.js"
+import { setHTML, setText } from "../utils/Writer.js"
 import { getFormData } from "../utils/FormHandler.js";
 import { Pop } from "../utils/Pop.js";
 
 function _drawNotes() {
     let notes = AppState.notes
     let content = ''
-    console.log("drawingNotes")
-    notes.forEach(note => content += note.template)
+    let noteTotal = 0
+    notes.forEach(note => {
+        content += note.template
+        noteTotal++
+    })
+    setText('notesNumber', noteTotal)
     setHTML('notesList', content)
 }
 
 function _drawActive() {
-    console.log(AppState.notes)
     if (AppState.activeNote) {
         let activeNoteContent = AppState.activeNote.activeTemplate
         setHTML('activeNote', activeNoteContent)
@@ -23,7 +26,6 @@ function _drawActive() {
 }
 export class NotesController {
     constructor() {
-        console.log('hello from the notes controller')
         _drawNotes()
         _drawActive()
         AppState.on('notes', _drawNotes)
