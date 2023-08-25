@@ -12,10 +12,7 @@ class ObservableAppState extends EventEmitter {
 
 
 
-  notes = [
-    new Note({ name: 'jeff' }),
-    new Note({ title: 'Arnnnn', name: 'arnold' })
-  ]
+  notes = loadState('notes', [Note])
 
   activeNote = null
 

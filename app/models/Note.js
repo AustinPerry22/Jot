@@ -6,8 +6,16 @@ export class Note {
         this.name = data.name
         this.color = data.color || '#000000'
         this.title = data.title || 'Title'
-        this.createdTime = data.createdTime || new Date()
-        this.updatedAt = data.updatedAt || new Date()
+        if (data.createdTime) {
+            this.createdTime = new Date(data.createdTime)
+        } else {
+            this.createdTime = new Date()
+        }
+        if (data.updatedAt) {
+            this.updatedAt = new Date(data.updatedAt)
+        } else {
+            this.updatedAt = new Date()
+        }
         this.body = data.body || ''
         this.words = data.words || ''
         this.characters = data.characters || ''
@@ -33,7 +41,7 @@ export class Note {
        
         <section class="row">
           <div class="col-2">
-            <p>Created on: ${this.createdTime.toDateString()} ${this.createdTime.toLocaleString([], { hour: "2-digit", minute: '2-digit' })}</p>
+            <p>Created on: ${this.createdTime.toDateString()} ${this.createdTime.toLocaleString()}</p>
             <p>Updated at: ${this.updatedAt.toDateString()} ${this.updatedAt.toLocaleString()}</p>
             <p>Words:${this.words} Characters: ${this.characters}</p>
           </div>
