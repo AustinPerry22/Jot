@@ -6,6 +6,8 @@ export class Note {
         this.createdTime = data.createdTime || new Date()
         this.updatedAt = data.updatedAt || new Date()
         this.body = data.body || ''
+        this.words = data.words || ''
+        this.characters = data.characters || ''
     }
 
     get template() {
@@ -20,7 +22,7 @@ export class Note {
         return `
         <section class="row justify-content-between">
           <div class="col-6">
-            <h4>HTML</h4>
+            <h4>${this.title}</h4>
           </div>
 
           <div class="col6"></div>
@@ -28,9 +30,9 @@ export class Note {
        
         <section class="row">
           <div class="col-2">
-            <p>Created at</p>
-            <p>Updated at</p>
-            <p>Words Characters</p>
+            <p>Created on: ${this.createdTime.toDateString()} ${this.createdTime.toLocaleString([], { hour: "2-digit", minute: '2-digit' })}</p>
+            <p>Updated at: ${this.updatedAt.toDateString()} ${this.updatedAt.toLocaleString([], { hour: "2-digit", minute: '2-digit' })}</p>
+            <p>Words:${this.words} Characters: ${this.characters}</p>
           </div>
 
           <div class="col-10">
