@@ -17,10 +17,63 @@
 
 <body>
   <!-- SECTION -->
+
+  <!-- <button class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvas" role="button" -->
+  <!-- aria-controls="offcanvas">X</button> -->
+
+
+  <div class="container-fluid">
+
+    <section class="row p-5">
+      <div class="col-6">
+        <h2>JOT LOGO</h2>
+      </div>
+      <div class="col-6 text-end">
+        <button class="btn btn-primary rounded-5" data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+          aria-controls="offcanvas"><i class="mdi mdi-notebook"></i></button>
+      </div>
+    </section>
+
+
+
+
+    <section class="row justify-content-center" id="activeNote">
+      <div class="col-10 border-active">
+        <section class="row justify-content-end pt-3">
+          <div class="col-6">
+            <h4 class="ps-3">HTML</h4>
+          </div>
+          <div class="col-6 text-end">
+            <button class="btn btn-danger rounded-5"><i class="mdi mdi-delete"></i></button>
+          </div>
+        </section>
+
+        <section class="row">
+          <div class="col-4 ps-4">
+            <p>Created at</p>
+            <p>Updated at</p>
+            <p>Words Characters</p>
+          </div>
+<!-- ANCHOR -->
+
+          <div class="col-8">
+            <textarea name="noteText" id="" cols="70" rows="20"></textarea>
+            <section class=" row justify-content-start">
+              <button class="btn btn-success col-3 me-5 ms-3"><i class="mdi mdi-floppy"></i>Save</button>
+
+            </section>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+  </div>
+
+
+
+
   <main class="container-fluid" id="router-view">
   </main>
-  <button class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvas" role="button"
-    aria-controls="offcanvas">X</button>
 
 
   <!-- <div class="offcanvas offcanvas-start bg-primary" tabindex="-1" id="offcanvas" aria-controls="offcanvas">

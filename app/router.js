@@ -5,7 +5,7 @@ import { NotesView } from "./views/NotesView.js";
 export const router = [
   {
     path: '',
-    controller: NotesController,
+    // controller: NotesController,
     view: NotesView
   }
 ]
