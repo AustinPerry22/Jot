@@ -25,7 +25,6 @@ export class NotesController {
     }
 
     selectNote(noteId) {
-        console.log('selecting note')
         let foundNote = AppState.notes.find(note => note.id == noteId)
         AppState.activeNote = foundNote
         AppState.emit('activeNote')
@@ -35,8 +34,14 @@ export class NotesController {
         window.event.preventDefault()
         const form = window.event.target
         const formData = getFormData(form)
-        console.log('create note controller')
         notesService.createNote(formData)
+    }
+
+    saveNote(noteId) {
+
+    }
+
+    deleteNote(noteId) {
 
     }
 

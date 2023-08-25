@@ -39,10 +39,10 @@ export class Note {
           </div>
 
           <div class="col-10">
-            <textarea name="noteText" id="" cols="70" rows="20"></textarea>
+            <textarea name="noteText" cols="70" rows="20">${this.body}</textarea>
             <section class=" row justify-content-start">
-              <button class="btn btn-success col-3 me-5 ms-3"><i class="mdi mdi-floppy"></i>Save</button>
-              <button class="btn btn-danger col-3 ms-5"><i class="mdi mdi-delete"></i>Delete</button>
+              <button class="btn btn-success col-3 me-5 ms-3" onclick="app.NotesController.saveNote('${this.id}')><i class="mdi mdi-floppy"></i>Save</button>
+              <button class="btn btn-danger col-3 ms-5" onclick="app.NotesController.deleteNote('${this.id}'><i class="mdi mdi-delete"></i>Delete</button>
             </section>
           </div>
         </section>
