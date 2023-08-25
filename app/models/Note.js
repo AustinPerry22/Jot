@@ -1,5 +1,8 @@
+import { generateId } from "../utils/generateId.js"
+
 export class Note {
     constructor(data) {
+        this.id = data.id || generateId()
         this.name = data.name
         this.color = data.color
         this.title = data.title || 'Title'
@@ -13,7 +16,7 @@ export class Note {
     get template() {
         return `
     <div class="col-12">
-            <h4>${this.title}</h4>
+            <h4 class="noteSelect" onclick="app.NotesController.selectNote('${this.id}')">${this.title}</h4>
           </div> 
     `
     }
@@ -31,7 +34,7 @@ export class Note {
         <section class="row">
           <div class="col-2">
             <p>Created on: ${this.createdTime.toDateString()} ${this.createdTime.toLocaleString([], { hour: "2-digit", minute: '2-digit' })}</p>
-            <p>Updated at: ${this.updatedAt.toDateString()} ${this.updatedAt.toLocaleString([], { hour: "2-digit", minute: '2-digit' })}</p>
+            <p>Updated at: ${this.updatedAt.toDateString()} ${this.updatedAt.toLocaleString()}</p>
             <p>Words:${this.words} Characters: ${this.characters}</p>
           </div>
 

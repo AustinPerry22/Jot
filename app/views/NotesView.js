@@ -14,7 +14,7 @@ export const NotesView = /*html*/`
         </section>
 
         <!-- New Note -->
-        <form class="row justify-content-evenly pt-3">
+        <form class="row justify-content-evenly pt-3" onsubmit="app.NotesController.createNote()">
           <label for="title">NEW NOTE</label>
           <input class="col-2" type="color" name="color" id="">
           <input class="col-7" type="text" placeholder="Note Title" name="title">

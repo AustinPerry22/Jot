@@ -1,6 +1,7 @@
 import { AppState } from "../AppState.js"
 import { notesService } from "../services/NotesService.js"
 import { setHTML } from "../utils/Writer.js"
+import { getFormData } from "../utils/FormHandler.js";
 
 function _drawNotes() {
     let notes = AppState.notes
@@ -17,9 +18,26 @@ function _drawActive() {
 export class NotesController {
     constructor() {
         console.log('hello from the notes controller')
-        notesService.initService()
         _drawNotes()
         _drawActive()
+        AppState.on('notes', _drawNotes)
+        AppState.on('activeNote', _drawActive)
+    }
+
+    selectNote(noteId) {
+        console.log('selecting note')
+        let foundNote = AppState.notes.find(note => note.id == noteId)
+        AppState.activeNote = foundNote
+        AppState.emit('activeNote')
+    }
+
+    createNote() {
+        window.event.preventDefault()
+        const form = window.event.target
+        const formData = getFormData(form)
+        console.log('create note controller')
+        notesService.createNote(formData)
+
     }
 
 }

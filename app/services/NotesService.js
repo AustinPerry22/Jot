@@ -1,6 +1,13 @@
+import { AppState } from "../AppState.js"
+import { Note } from "../models/Note.js"
+
 class NotesService {
-    initService() {
-        console.log('hello from the service')
+    createNote(formData) {
+        let newNote = new Note(formData)
+        AppState.notes.push(newNote)
+        AppState.activeNote = newNote
+        AppState.emit('notes')
+        AppState.emit('activeNote')
     }
 }
 
