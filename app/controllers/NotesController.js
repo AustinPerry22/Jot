@@ -37,12 +37,14 @@ export class NotesController {
         notesService.createNote(formData)
     }
 
-    saveNote(noteId) {
-
+    saveNote() {
+        let textArea = document.querySelector('textarea')
+        let updatedBody = textArea.value
+        notesService.saveNote(updatedBody)
     }
 
     deleteNote(noteId) {
-
+        notesService.deleteNote(noteId)
     }
 
 }
