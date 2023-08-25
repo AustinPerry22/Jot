@@ -10,7 +10,10 @@ class NotesService {
 
     }
     deleteNote(noteId) {
-        throw new Error("Method not implemented.")
+        let currentNote = AppState.notes.find(note => note.id == noteId)
+        let filteredNotes = AppState.notes.filter(note => note.id != noteId)
+        AppState.notes = filteredNotes
+        AppState.activeNote = null
     }
     createNote(formData) {
         let newNote = new Note(formData)

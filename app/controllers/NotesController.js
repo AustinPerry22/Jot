@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js"
 import { notesService } from "../services/NotesService.js"
 import { setHTML } from "../utils/Writer.js"
 import { getFormData } from "../utils/FormHandler.js";
+import { Pop } from "../utils/Pop.js";
 
 function _drawNotes() {
     let notes = AppState.notes
@@ -12,8 +13,13 @@ function _drawNotes() {
 }
 
 function _drawActive() {
-    let activeNoteContent = AppState.activeNote.activeTemplate
-    setHTML('activeNote', activeNoteContent)
+    console.log(AppState.notes)
+    if (AppState.activeNote) {
+        let activeNoteContent = AppState.activeNote.activeTemplate
+        setHTML('activeNote', activeNoteContent)
+    } else {
+        setHTML('activeNote', '')
+    }
 }
 export class NotesController {
     constructor() {
@@ -27,7 +33,6 @@ export class NotesController {
     selectNote(noteId) {
         let foundNote = AppState.notes.find(note => note.id == noteId)
         AppState.activeNote = foundNote
-        AppState.emit('activeNote')
     }
 
     createNote() {
@@ -43,8 +48,10 @@ export class NotesController {
         notesService.saveNote(updatedBody)
     }
 
-    deleteNote(noteId) {
-        notesService.deleteNote(noteId)
+    async deleteNote(noteId) {
+        if (await Pop.confirm("Are you sure you want to delete this note?")) {
+            notesService.deleteNote(noteId)
+        }
     }
 
 }

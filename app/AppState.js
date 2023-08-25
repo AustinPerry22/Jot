@@ -17,7 +17,7 @@ class ObservableAppState extends EventEmitter {
     new Note({ title: 'Arnnnn', name: 'arnold' })
   ]
 
-  activeNote = this.notes[0]
+  activeNote = null
 
   // NOTE Used to load initial data
   init() {
