@@ -20,9 +20,17 @@ function _countWords(body){
     return wordCount
 }
 
+function _setActive(activeNote){
+    AppState.notes.forEach(note =>{
+        note.active = false
+    })
+    activeNote.active = true
+}
+
 class NotesService {
     saveNote(updatedBody) {
         let active = AppState.activeNote
+        _setActive(active)
         active.body = updatedBody
         active.updatedAt = new Date()
         active.words = _countWords(updatedBody)
@@ -46,6 +54,7 @@ class NotesService {
         AppState.emit('activeNote')
         _saveNotes()
     }
+    
 }
 
 export const notesService = new NotesService()

@@ -19,6 +19,7 @@ export class Note {
         this.body = data.body || ''
         this.words = data.words || 0
         this.characters = data.characters || 0
+        this.active = data.active || false
     }
 
     get template() {
