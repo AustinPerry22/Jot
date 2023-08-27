@@ -4,7 +4,7 @@ export class Note {
     constructor(data) {
         this.id = data.id || generateId()
         this.name = data.name
-        this.color = data.color || '#000000'
+        this.color = data.color || '#ffffff'
         this.title = data.title || 'Title'
         if (data.createdTime) {
             this.createdTime = new Date(data.createdTime)
@@ -17,8 +17,8 @@ export class Note {
             this.updatedAt = new Date()
         }
         this.body = data.body || ''
-        this.words = data.words || ''
-        this.characters = data.characters || ''
+        this.words = data.words || 0
+        this.characters = data.characters || 0
     }
 
     get template() {
@@ -31,31 +31,32 @@ export class Note {
 
     get activeTemplate() {
         return `
-        <section class="row justify-content-between">
+        
+      <div class="col-10 border-active">
+        <section class="row justify-content-end pt-3">
           <div class="col-6">
-            <h4 style= "color: ${this.color}">${this.title}</h4>
+            <h4 class="ps-3" style="color: ${this.color}">${this.title}</h4>
+            
           </div>
-
-          <div class="col6"></div>
+          <div class="col-6 text-end">
+            <button class="btn btn-danger rounded-5" onclick="app.NotesController.deleteNote('${this.id}')"><i class="mdi mdi-delete"></i></button>
+          </div>
         </section>
-       
+
         <section class="row">
-          <div class="col-2">
-            <p>Created on: ${this.createdTime.toDateString()} ${this.createdTime.toLocaleString()}</p>
-            <p>Updated at: ${this.updatedAt.toDateString()} ${this.updatedAt.toLocaleString()}</p>
-            <p>Words:${this.words} Characters: ${this.characters}</p>
+          <div class="col-12 col-md-3 ps-4">
+            <p class="py-md-3">Created at: ${this.createdTime.toDateString()} ${this.createdTime.toLocaleTimeString()}</p>
+            <p class="py-md-3">Updated at: ${this.updatedAt.toDateString()} ${this.updatedAt.toLocaleTimeString()}</p>
+            <p class="py-md-3">Words: ${this.words}</p>
+            <p class="py-md-3">Characters: ${this.characters}</p>
           </div>
 
-          <div class="col-10">
-            <textarea cols="70" rows="20">${this.body}</textarea>
-            <section class=" row justify-content-start">
-              <button class="btn btn-success col-3 me-5 ms-3" onclick="app.NotesController.saveNote('${this.id}')"><i class="mdi mdi-floppy"></i>Save</button>
-              <button class="btn btn-danger col-3 ms-5" onclick="app.NotesController.deleteNote('${this.id}')"><i class="mdi mdi-delete"></i>Delete</button>
-            </section>
+          <div class="col-12 col-md-9 pb-4">
+            <textarea type="text" name="noteText" id="noteText" class="w-85" style="border-color: ${this.color}">${this.body}</textarea>
+            <button class="btn btn-success w-85" onclick="app.NotesController.saveNote('${this.id}')"><i class="mdi mdi-floppy"></i>Save</button>
           </div>
         </section>
+      </div>
         `
     }
 }
-
-// ${this.title} my name is ${this.name}, date = ${this.createdTime.toDateString()} ${this.createdTime.toLocaleString([], { hour: "2-digit", minute: '2-digit' })}

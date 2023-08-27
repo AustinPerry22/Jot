@@ -21,7 +21,7 @@ function _drawActive() {
         let activeNoteContent = AppState.activeNote.activeTemplate
         setHTML('activeNote', activeNoteContent)
     } else {
-        setHTML('activeNote', '')
+        setHTML('activeNote', '<h6 class="text-end">click the journal to select or create a Jot</h6>')
     }
 }
 export class NotesController {
@@ -51,7 +51,7 @@ export class NotesController {
     }
 
     async deleteNote(noteId) {
-        if (await Pop.confirm("Are you sure you want to delete this note?")) {
+        if (await Pop.confirm("Are you sure you want to delete this jot?")) {
             notesService.deleteNote(noteId)
         }
     }

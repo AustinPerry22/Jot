@@ -2,7 +2,16 @@
 .border-active {
     border-style: solid;
     border-radius: .5em;
-    border-color: rgb(0, 0, 0);
+    border-color: #274373;
     border-width: .25em;
+}
 
+.w-85{
+    width: 85%;
+}
+
+#noteText{
+    height: 65vh;
+    border: solid #9900ff .25em;
+    border-radius: .5em;
 }
