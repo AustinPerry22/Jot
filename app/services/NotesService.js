@@ -7,11 +7,26 @@ function _saveNotes() {
     console.log('saving', AppState.notes)
 }
 
+function _countWords(body){
+    let wordCount = 0
+    if(body[body.length] != ' ' && body != ''){
+        wordCount++
+    }
+    for(let i =0; i < body.length; i++){
+        if(body[i] == ' '){
+            wordCount ++
+        }
+    }
+    return wordCount
+}
+
 class NotesService {
     saveNote(updatedBody) {
         let active = AppState.activeNote
         active.body = updatedBody
         active.updatedAt = new Date()
+        active.words = _countWords(updatedBody)
+        active.characters = updatedBody.length
         AppState.emit('activeNote')
         _saveNotes()
 
