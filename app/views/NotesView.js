@@ -29,7 +29,7 @@ export const NotesView = /*html*/`
             <input class="h-100" type="color" name="color" value="#ffffff">
           </div>
           <input class="col-7" type="text" placeholder="Note Title" required minlength="3" maxlength="15" name="title">
-          <button class="col-3 btn btn-success" type="submit">Add</button>
+          <button class="col-3 btn btn-success" type="submit" data-bs-dismiss="offcanvas">Add</button>
         </form>
       </div>
     </div>

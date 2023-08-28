@@ -1,37 +1,37 @@
 import { generateId } from "../utils/generateId.js"
 
 export class Note {
-    constructor(data) {
-        this.id = data.id || generateId()
-        this.name = data.name
-        this.color = data.color || '#ffffff'
-        this.title = data.title || 'Title'
-        if (data.createdTime) {
-            this.createdTime = new Date(data.createdTime)
-        } else {
-            this.createdTime = new Date()
-        }
-        if (data.updatedAt) {
-            this.updatedAt = new Date(data.updatedAt)
-        } else {
-            this.updatedAt = new Date()
-        }
-        this.body = data.body || ''
-        this.words = data.words || 0
-        this.characters = data.characters || 0
-        this.active = data.active || false
+  constructor(data) {
+    this.id = data.id || generateId()
+    this.name = data.name
+    this.color = data.color || '#ffffff'
+    this.title = data.title || 'Title'
+    if (data.createdTime) {
+      this.createdTime = new Date(data.createdTime)
+    } else {
+      this.createdTime = new Date()
     }
+    if (data.updatedAt) {
+      this.updatedAt = new Date(data.updatedAt)
+    } else {
+      this.updatedAt = new Date()
+    }
+    this.body = data.body || ''
+    this.words = data.words || 0
+    this.characters = data.characters || 0
+    this.active = data.active || false
+  }
 
-    get template() {
-        return `
+  get template() {
+    return `
     <div class="col-12">
-            <h4 style="color: ${this.color}"class="noteSelect" onclick="app.NotesController.selectNote('${this.id}')">${this.title}</h4>
+            <h4 style="color: ${this.color}"class="noteSelect selectable" data-bs-dismiss="offcanvas" onclick="app.NotesController.selectNote('${this.id}')">${this.title}</h4>
           </div> 
     `
-    }
+  }
 
-    get activeTemplate() {
-        return `
+  get activeTemplate() {
+    return `
         
       <div class="col-10 border-active">
         <section class="row justify-content-end pt-3">
@@ -59,5 +59,5 @@ export class Note {
         </section>
       </div>
         `
-    }
+  }
 }
